@@ -7,12 +7,13 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
     traefik.ingress.kubernetes.io/redirect-permanent: "true"
     traefik.ingress.kubernetes.io/router.middlewares: dev-redirect-to-https@kubernetescrd
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: traefik
   tls:
   - hosts:
     - dev.192.168.56.110.nip.io
-    secretName: iot-cert
+    secretName: playground-cert
   rules:
   - host: dev.192.168.56.110.nip.io
     http:
